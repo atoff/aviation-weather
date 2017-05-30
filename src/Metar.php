@@ -3,16 +3,36 @@
 namespace CobaltGrid\AviationWeather\Metar;
 
 use Carbon\Carbon;
+use SimpleXMLElement;
+use GuzzleHttp\Client;
 
 class Metar
 {
     private $raw_res = null;
     private $raw_array = null;
+	
+	private $base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
-    public function __construct ($raw_array)
+    public function __construct ($icao)
     {
-      $this->raw_res = $raw_array;
-      $this->raw_array = $raw_array->data->METAR;
+      $params = [
+          "dataSource" => "metars",
+          "requestType" => "retrieve",
+          "hoursBeforeNow" => "12",
+          "mostRecent" => "true",
+          "stationString" => $icao
+      ];
+      $xml_raw = $this->sendRequest($params);
+	  if(!$xml_raw){
+	    return false;
+	  }
+	  $xml = new SimpleXMLElement($xml_raw);
+	  if(((int) $xml->data->attributes()->num_results) == 0){
+	    return false;
+	  }
+      $this->raw_res = $xml;
+      $this->raw_array = $xml->data->METAR;
+	  return true;
     }
 
     public function raw_response()
@@ -190,13 +210,35 @@ class Metar
       return $this->raw_array->flight_category;
     }
 
+	private function sendRequest($params = [])
+    {
+      $params['format'] = "xml";
+
+      try {
+        $client = new Client(['verify' => false]);
+        $result = $client->get($this->base_url, [
+          'query' => $params
+          ]);
+        $content = $result->getBody()->getContents();
+        $statuscode = $result->getStatusCode();
+        if (200 !== $statuscode) {
+          // Unable to retrieve weather data
+          return false;
+        }
+      } catch (\Exception $e) {
+        return false;
+      }
+      return $content;
+    }
+	
     public function toArray()
     {
       $exclude_functions = [
         'raw',
         'raw_response',
         '__construct',
-        'toArray'
+        'toArray',
+		'sendRequest'
       ];
       $array = [];
       $methods = get_class_methods($this);
