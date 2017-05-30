@@ -14,9 +14,11 @@ This will ensure that all required dependencies will be installed automatically.
 Usage
 -------
 At the moment, AviationWeather only support ICAO codes. You can load a METAR by passing the ICAO code when you construct the class.
-> use Cobaltgrid\AviationWeather\Metar;
-> ...
+```
+use Cobaltgrid\AviationWeather\Metar;
+...
 $metar = new Metar("EGKK");
+```
 
 Method   | Description
 -------- | ---
