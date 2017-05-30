@@ -1,6 +1,6 @@
 <?php
 
-namespace CobaltGrid\AviationWeather\Metar;
+namespace CobaltGrid\AviationWeather;
 
 use Carbon\Carbon;
 use SimpleXMLElement;
