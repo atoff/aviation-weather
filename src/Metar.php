@@ -11,7 +11,7 @@ class Metar
     private $raw_res = null;
     private $raw_array = null;
 	
-	private $base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
+    private $base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
     public function __construct ($icao)
     {
@@ -23,16 +23,16 @@ class Metar
           "stationString" => $icao
       ];
       $xml_raw = $this->sendRequest($params);
-	  if(!$xml_raw){
+      if(!$xml_raw){
 	    return false;
-	  }
-	  $xml = new SimpleXMLElement($xml_raw);
-	  if(((int) $xml->data->attributes()->num_results) == 0){
+      }
+      $xml = new SimpleXMLElement($xml_raw);
+      if(((int) $xml->data->attributes()->num_results) == 0){
 	    return false;
-	  }
+      }
       $this->raw_res = $xml;
       $this->raw_array = $xml->data->METAR;
-	  return true;
+      return true;
     }
 
     public function raw_response()
@@ -163,7 +163,7 @@ class Metar
           "RA" => "Rain",
           "SN" => "Snow",
           "SG" => "Snow Grains",
-          "IC" => "ice crystals",
+          "IC" => "Ice Crystals",
           "PL" => "Ice Pellets",
           "GR" => "Hail",
           "GS" => "Small Hail",
@@ -238,7 +238,7 @@ class Metar
         'raw_response',
         '__construct',
         'toArray',
-		'sendRequest'
+	'sendRequest'
       ];
       $array = [];
       $methods = get_class_methods($this);
