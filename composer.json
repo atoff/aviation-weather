@@ -1,0 +1,24 @@
+{
+    "name": "cobaltgrid/aviation-weather",
+    "description" : "A simple (Laravel compatible) library for fetching and decoding METARs",
+    "keywords" : ["weather", "aviation", "metar"],
+    "homepage" : "https://github.com/atoff/aviation-weather",
+    "type" : "library",
+    "license" : "MIT",
+    "authors" : [
+      {
+        "name" : "Alex Toff",
+        "email" : "alex@cobaltgrid.com",
+        "homepage" : "https://www.cobaltgrid.com"
+      }
+    ],
+    "require": {
+        "nesbot/carbon": "1.22.*",
+		"tightenco/collect": "5.4.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "CobaltGrid\\AviationWeather\\": "src"
+        }
+    }
+}
