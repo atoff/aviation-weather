@@ -12,6 +12,7 @@ class Weather
     private $raw_res = null;
     private $raw_array = null;
 	private $icao;
+	private $metar;
 	
 	private $metar_base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
@@ -50,7 +51,7 @@ class Weather
 
       try {
         $client = new Client(['verify' => false]);
-        $result = $client->get($this->base_url, [
+        $result = $client->get($this->metar_base_url, [
           'query' => $params
           ]);
         $content = $result->getBody()->getContents();
