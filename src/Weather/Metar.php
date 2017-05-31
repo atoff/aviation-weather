@@ -1,38 +1,18 @@
 <?php
 
-namespace CobaltGrid\AviationWeather;
+namespace CobaltGrid\Aviation\Weather;
 
 use Carbon\Carbon;
-use SimpleXMLElement;
-use GuzzleHttp\Client;
 
 class Metar
 {
     private $raw_res = null;
     private $raw_array = null;
-	
-	private $base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
-    public function __construct ($icao)
+    public function __construct ($raw_array)
     {
-      $params = [
-          "dataSource" => "metars",
-          "requestType" => "retrieve",
-          "hoursBeforeNow" => "12",
-          "mostRecent" => "true",
-          "stationString" => $icao
-      ];
-      $xml_raw = $this->sendRequest($params);
-	  if(!$xml_raw){
-	    return false;
-	  }
-	  $xml = new SimpleXMLElement($xml_raw);
-	  if(((int) $xml->data->attributes()->num_results) == 0){
-	    return false;
-	  }
-      $this->raw_res = $xml;
-      $this->raw_array = $xml->data->METAR;
-	  return true;
+      $this->raw_res = $raw_array;
+      $this->raw_array = $raw_array->data->METAR;
     }
 
     public function raw_response()
