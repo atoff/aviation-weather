@@ -143,7 +143,7 @@ class Metar
           "RA" => "Rain",
           "SN" => "Snow",
           "SG" => "Snow Grains",
-          "IC" => "ice crystals",
+          "IC" => "Ice Crystals",
           "PL" => "Ice Pellets",
           "GR" => "Hail",
           "GS" => "Small Hail",
