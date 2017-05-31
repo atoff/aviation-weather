@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use App\Models\Data\Airport;
 use CobaltGrid\Aviation\Weather\Metar;
 
-class Metar
+class Weather
 {
     private $raw_res = null;
     private $raw_array = null;
