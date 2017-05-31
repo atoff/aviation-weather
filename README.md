@@ -40,6 +40,6 @@ weather_array()     | An array of raw weather codes (i.e "-HZ +SH" etc) (Array)
 weather()     | An array of decoded weather codes. Key = Code (i.e '-RA'), Value = Decoded Meaning (i.e 'Light Rain') (Array)
 sky_cover()     | An array of decoded cloud cover. Each array item is an array with the following format: `['type' => 'SCT', 'type_human' => 'Scattered', 'height' => 2000]` . Height is in feet.
 flight_cat()     | An indication of the type of flying permitted by the weather. Example values: MVFR, IFR, LVFR, etc.
-to_array()     | Converts the above into an array format
+toArray()     | Converts the above into an array format
 
 
