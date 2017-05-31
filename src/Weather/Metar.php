@@ -174,7 +174,8 @@ class Metar
           "FEW" => "Few",
           "SCT" => "Scattered",
           "BKN" => "Broken",
-          "OVC" => "Overcast"
+          "OVC" => "Overcast",
+		      "CAVOK" => "Ceiling and Visibility OK"
       ];
 
       $clouds = $this->raw_array->sky_condition;
@@ -210,7 +211,7 @@ class Metar
       }
       return $content;
     }
-	
+
     public function toArray()
     {
       $exclude_functions = [
