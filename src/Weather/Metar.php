@@ -175,7 +175,9 @@ class Metar
           "SCT" => "Scattered",
           "BKN" => "Broken",
           "OVC" => "Overcast",
-		      "CAVOK" => "Ceiling and Visibility OK"
+		      "CAVOK" => "Ceiling and Visibility OK",
+          "CLR"   => "Clear of Cloud/No cloud detected",
+          "NCD"   => "No cloud detected"
       ];
 
       $clouds = $this->raw_array->sky_condition;
