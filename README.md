@@ -1,6 +1,11 @@
 # Aviation Weather
 A simple (Laravel compatible) library for fetching and decoding METARs. (Soon to be more than this, however)
 
+Prerequisites
+-------
+- Laravel is now required for this library to work properly (due to using Laravel's Cache system)
+
+
 Installation
 -------
 

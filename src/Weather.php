@@ -2,6 +2,7 @@
 
 namespace CobaltGrid\Aviation;
 
+use Cache;
 use SimpleXMLElement;
 use GuzzleHttp\Client;
 use App\Models\Data\Airport;
@@ -11,10 +12,12 @@ class Weather
 {
     private $raw_res = null;
     private $raw_array = null;
-	private $icao;
-	private $metar;
-	
-	private $metar_base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
+  	private $icao;
+  	private $metar;
+
+    const METAR_CACHE_KEY = "CGWEATHER_METAR_CACHE_";
+
+	  private $metar_base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
     public function __construct($icao_code)
     {
@@ -25,6 +28,9 @@ class Weather
     {
         if($this->metar){
           return $this->metar;
+        }
+        if(Cache::has(self::METAR_CACHE_KEY.$this->icao_code)){
+          return Cache::get(self::METAR_CACHE_KEY.$this->icao_code);
         }
         $params = [
             "dataSource" => "metars",
@@ -42,7 +48,8 @@ class Weather
           return false;
         }
         $this->metar = new Metar($xml);
-        return $this->metar;
+        Cache::put(self::METAR_CACHE_KEY.$this->icao_code, $this->metar->toArray(), 3);
+        return $this->metar->toArray();
     }
 
     private function sendRequest($params = [])

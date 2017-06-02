@@ -190,7 +190,7 @@ class Metar
 
     public function flight_cat()
     {
-      return $this->raw_array->flight_category;
+      return (string) $this->raw_array->flight_category;
     }
 
 	private function sendRequest($params = [])
@@ -221,7 +221,7 @@ class Metar
         'raw_response',
         '__construct',
         'toArray',
-		'sendRequest'
+		    'sendRequest'
       ];
       $array = [];
       $methods = get_class_methods($this);
