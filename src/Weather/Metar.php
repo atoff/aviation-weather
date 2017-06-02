@@ -37,7 +37,7 @@ class Metar
 
     public function time()
     {
-      return new Carbon($this->raw_array->observation_time);
+      return (new Carbon($this->raw_array->observation_time))->format('Y-m-d H:i:s');
     }
 
     public function latitude()
