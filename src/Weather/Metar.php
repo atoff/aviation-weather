@@ -172,7 +172,13 @@ class Metar
 
       $combined = collect($orig_weather)->values()->combine(collect($human_weather))->all();
 
-      return $combined;
+      $output = [];
+
+      foreach ($combined as $code => $value) {
+        $output[] = ['code' => $code, 'human' => $value];
+      }
+
+      return $output;
     }
 
     public function sky_cover()
