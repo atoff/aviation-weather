@@ -129,16 +129,24 @@ class Metar
     {
       $orig_weather = $this->weather_array();
 
-      // Replace + / - 's
+      // Replace Qualifiers
 
       $weather = str_replace('+', 'Heavy ', $orig_weather);
       $weather = str_replace('-', 'Light ', $weather);
       $weather = str_replace('VC', 'In Vicinity: ', $weather);
 
       $weatherCodes = collect([
-          "SH" => "Showers",
-          "TS" => "Thunderstorm",
-          "FZ" => "Freezing",
+      	// Descriptor Codes
+      	  "MI" => "Shallow ",
+    		  "BC" => "Patches ",
+    		  "PR" => "Partial ",
+    		  "DR" => "Drifiting ",
+    		  "BL" => "Blowing ",
+    		  "MI" => "Shallow ",
+    		  "SH" => "Showers ",
+    		  "TS" => "Thunderstorm ",
+    		  "FZ" => "Freezing ",
+
           "DZ" => "Drizzle",
           "RA" => "Rain",
           "SN" => "Snow",
