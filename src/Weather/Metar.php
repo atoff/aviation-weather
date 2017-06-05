@@ -37,7 +37,8 @@ class Metar
 
     public function time()
     {
-      return (new Carbon($this->raw_array->observation_time))->format('Y-m-d H:i:s');
+      $obs = str_replace('Z', 'UTC', $this->raw_array->observation_time);
+      return (new Carbon($obs))->format('Y-m-d H:i:s e');
     }
 
     public function latitude()
