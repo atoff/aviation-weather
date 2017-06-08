@@ -87,7 +87,7 @@ class Metar
           return $vis * 1.609;
           break;
         case "m":
-          return round(($vis * 1.609)*1000);
+          return ($vis * 1.609)*1000;
           break;
         case "nm":
           return $vis * 0.868976;
@@ -110,7 +110,7 @@ class Metar
           if($this->raw_array->sea_level_pressure_mb){
             return (float) $this->raw_array->sea_level_pressure_mb;
           }
-          return round($qnh * 33.863886666718315);
+          return $qnh * 33.863886666718315;
           break;
         case "hg":
           return $qnh;
