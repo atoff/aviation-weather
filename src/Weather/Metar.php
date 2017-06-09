@@ -67,6 +67,29 @@ class Metar
       return (int) $this->raw_array->wind_dir_degrees;
     }
 
+    public function wind_variation_raw(){
+      $matches = array();
+      $preg = preg_match('/\d{3}V\d{3}/', $this->raw_string(), $matches);
+      if(count($matches) == 0){
+        return null;
+      }
+      return $matches[0];
+    }
+
+    public function wind_variation_upper(){
+      if($this->wind_variation_raw()){
+        return explode('V', $this->wind_variation_raw())[1];
+      }
+      return null;
+    }
+
+    public function wind_variation_lower(){
+      if($this->wind_variation_raw()){
+        return explode('V', $this->wind_variation_raw())[0];
+      }
+      return null;
+    }
+
     public function wind_speed()
     {
       // 0 & wind direction 0 = Wind Calm
@@ -139,12 +162,12 @@ class Metar
       $weatherCodes = collect([
       	// Descriptor Codes
       	  "MI" => "Shallow ",
-    		  "BC" => "Patches of",
+    		  "BC" => "Patches ",
     		  "PR" => "Partial ",
     		  "DR" => "Drifiting ",
     		  "BL" => "Blowing ",
     		  "MI" => "Shallow ",
-    		  "SH" => "Showers of",
+    		  "SH" => "Showers ",
     		  "TS" => "Thunderstorm ",
     		  "FZ" => "Freezing ",
 
