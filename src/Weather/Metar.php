@@ -139,12 +139,12 @@ class Metar
       $weatherCodes = collect([
       	// Descriptor Codes
       	  "MI" => "Shallow ",
-    		  "BC" => "Patches ",
+    		  "BC" => "Patches of",
     		  "PR" => "Partial ",
     		  "DR" => "Drifiting ",
     		  "BL" => "Blowing ",
     		  "MI" => "Shallow ",
-    		  "SH" => "Showers ",
+    		  "SH" => "Showers of",
     		  "TS" => "Thunderstorm ",
     		  "FZ" => "Freezing ",
 
