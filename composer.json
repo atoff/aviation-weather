@@ -14,7 +14,7 @@
     ],
     "require": {
         "nesbot/carbon": "1.22.*",
-		"tightenco/collect": "5.4.*",
+	"tightenco/collect": "5.5.*",
         "guzzlehttp/guzzle": "^6.2"
     },
     "autoload": {
