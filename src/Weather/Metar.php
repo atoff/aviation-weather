@@ -162,14 +162,14 @@ class Metar
       $weatherCodes = collect([
       	// Descriptor Codes
       	  "MI" => "Shallow ",
-    		  "BC" => "Patches ",
-    		  "PR" => "Partial ",
-    		  "DR" => "Drifiting ",
-    		  "BL" => "Blowing ",
-    		  "MI" => "Shallow ",
-    		  "SH" => "Showers ",
-    		  "TS" => "Thunderstorm ",
-    		  "FZ" => "Freezing ",
+	  "BC" => "Patches ",
+    	  "PR" => "Partial ",
+    	  "DR" => "Drifiting ",
+    	  "BL" => "Blowing ",
+    	  "MI" => "Shallow ",
+    	  "SH" => "Showers ",
+    	  "TS" => "Thunderstorm ",
+    	  "FZ" => "Freezing ",
 
           "DZ" => "Drizzle",
           "RA" => "Rain",
@@ -213,7 +213,7 @@ class Metar
           "SCT" => "Scattered",
           "BKN" => "Broken",
           "OVC" => "Overcast",
-		      "CAVOK" => "Ceiling and Visibility OK",
+	  "CAVOK" => "Ceiling and Visibility OK",
           "CLR"   => "Clear of Cloud/No cloud detected",
           "NCD"   => "No cloud detected"
       ];
@@ -231,7 +231,7 @@ class Metar
       return (string) $this->raw_array->flight_category;
     }
 
-	private function sendRequest($params = [])
+    private function sendRequest($params = [])
     {
       $params['format'] = "xml";
 
@@ -259,7 +259,7 @@ class Metar
         'raw_response',
         '__construct',
         'toArray',
-		    'sendRequest'
+	'sendRequest'
       ];
       $array = [];
       $methods = get_class_methods($this);
