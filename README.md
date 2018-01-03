@@ -3,7 +3,7 @@ A simple (Laravel compatible) library for fetching and decoding METARs. (Soon to
 
 Prerequisites
 -------
-- Laravel is now required for this library to work properly (due to using Laravel's Cache system)
+- Laravel is now required for this library to work properly (due to use of Laravel's Cache and Log system)
 
 
 Installation
@@ -11,7 +11,7 @@ Installation
 
 Using Composer:
 
-`$ composer require cobaltgrid/aviation-weather 1.0`   
+`$ composer require cobaltgrid/aviation-weather`   
 
 This will ensure that all required dependencies will be installed automatically.
 
