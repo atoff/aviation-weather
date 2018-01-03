@@ -231,27 +231,6 @@ class Metar
       return (string) $this->raw_array->flight_category;
     }
 
-    private function sendRequest($params = [])
-    {
-      $params['format'] = "xml";
-
-      try {
-        $client = new Client(['verify' => false]);
-        $result = $client->get($this->base_url, [
-          'query' => $params
-          ]);
-        $content = $result->getBody()->getContents();
-        $statuscode = $result->getStatusCode();
-        if (200 !== $statuscode) {
-          // Unable to retrieve weather data
-          return false;
-        }
-      } catch (\Exception $e) {
-        return false;
-      }
-      return $content;
-    }
-
     public function toArray()
     {
       $exclude_functions = [
