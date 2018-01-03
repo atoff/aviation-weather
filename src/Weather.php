@@ -5,7 +5,6 @@ namespace CobaltGrid\Aviation;
 use Cache;
 use SimpleXMLElement;
 use GuzzleHttp\Client;
-use App\Models\Data\Airport;
 use CobaltGrid\Aviation\Weather\Metar;
 
 class Weather
