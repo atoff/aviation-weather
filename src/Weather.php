@@ -11,12 +11,12 @@ class Weather
 {
     private $raw_res = null;
     private $raw_array = null;
-  	private $icao;
-  	private $metar;
+    private $icao;
+    private $metar;
 
     const METAR_CACHE_KEY = "CGWEATHER_METAR_CACHE_";
 
-	  private $metar_base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
+    private $metar_base_url = "https://aviationweather.gov/adds/dataserver_current/httpparam";
 
     public function __construct($icao_code)
     {
@@ -67,7 +67,7 @@ class Weather
           return false;
         }
       } catch (\Exception $e) {
-        \Log::info($e);
+        \Log::error($e);
         return false;
       }
       return $content;
